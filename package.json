@@ -1,5 +1,6 @@
 {
   "name": "rest-codegen",
+  "description": "CLI to generate typescript types from REST API",
   "version": "0.0.0",
   "type": "module",
   "exports": "./dist/index.js",
