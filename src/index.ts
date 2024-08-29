@@ -2,9 +2,7 @@
 import { Command } from 'commander';
 
 import { getPackageInfo } from './utils/get-package-info';
-import { init } from './commands/init';
-import { add } from './commands/add';
-import { diff } from './commands/diff';
+import { generate } from './commands/generate';
 
 process.on('SIGINT', () => process.exit(0));
 process.on('SIGTERM', () => process.exit(0));
@@ -13,14 +11,15 @@ async function main() {
   const packageInfo = await getPackageInfo();
 
   const program = new Command()
-    .name('shadcn-ui')
-    .description('add components and dependencies to your project')
+    .name('rest-codegen')
+    .description('generate types from REST API')
     .version(
       packageInfo.version || '1.0.0',
       '-v, --version',
       'display the version number'
     );
-  program.addCommand(init).addCommand(add).addCommand(diff);
+
+  program.addCommand(generate);
 
   program.parse();
 }
